@@ -2,7 +2,7 @@ document.getElementById('loginForm').addEventListener('submit', function(event) 
     event.preventDefault(); // Previene il comportamento predefinito del form
 
     const password = document.getElementById('password').value;
-    const correctPassword = 'passwordCorretta'; // Sostituisci con la password corretta
+    const correctPassword = 'mrbana1010'; // Sostituisci con la password corretta
 
     if (password === correctPassword) {
         window.location.href = 'seconda-parte_home/home.html'; // Sostituisci con la pagina successiva
