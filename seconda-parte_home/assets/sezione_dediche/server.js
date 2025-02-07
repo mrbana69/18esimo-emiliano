@@ -1,3 +1,5 @@
+require('dotenv').config();
+
 const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');
@@ -9,15 +11,15 @@ app.use(cors());
 
 const accountSid = process.env.TWILIO_ACCOUNT_SID;
 const authToken = process.env.TWILIO_AUTH_TOKEN;
-const client = new twilio(accountSid, authToken);
+const client = twilio(accountSid, authToken);
 
 app.post('/send-dedica', (req, res) => {
     const { dedica } = req.body;
 
     client.messages.create({
         body: dedica,
-        from: '+15153052297', // Twilio phone number
-        to: process.env.ADMIN_PHONE_NUMBER, // Admin's phone number
+        from: process.env.TWILIO_PHONE_NUMBER, // Twilio phone number
+        to: process.env.ADMIN_PHONE_NUMBER // Admin's phone number
     })
     .then(message => {
         console.log('Messaggio inviato:', message.sid);
