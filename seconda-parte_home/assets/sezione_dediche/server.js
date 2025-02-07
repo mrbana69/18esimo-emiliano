@@ -16,8 +16,8 @@ app.post('/send-dedica', (req, res) => {
 
     client.messages.create({
         body: dedica,
-        from: 'whatsapp:+14155238886', // Twilio sandbox number
-        to: `whatsapp:${process.env.ADMIN_PHONE_NUMBER}` // Admin's WhatsApp number
+        from: '+15153052297', // Twilio phone number
+        to: process.env.ADMIN_PHONE_NUMBER, // Admin's phone number
     })
     .then(message => {
         console.log('Messaggio inviato:', message.sid);
