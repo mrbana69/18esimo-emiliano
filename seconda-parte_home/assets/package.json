@@ -1,0 +1,16 @@
+{
+    "name": "chat-server",
+    "version": "1.0.0",
+    "description": "Server per la chat live utilizzando Pusher",
+    "main": "server.js",
+    "scripts": {
+      "start": "node server.js"
+    },
+    "dependencies": {
+      "express": "^4.17.1",
+      "body-parser": "^1.19.0",
+      "pusher": "^5.0.0"
+    },
+    "author": "Emiliano Bana",
+    "license": "MIT"
+  }
