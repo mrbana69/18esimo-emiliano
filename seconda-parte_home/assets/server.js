@@ -7,7 +7,9 @@ const app = express();
 app.use(bodyParser.json());
 
 // Configura CORS
-app.use(cors());
+app.use(cors({
+    origin: 'https://mrbana69.github.io'
+}));
 
 const pusher = new Pusher({
     appId: '1938373',
