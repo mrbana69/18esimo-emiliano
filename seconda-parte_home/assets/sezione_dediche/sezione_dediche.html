@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sezione Dediche</title>
+    <link href="https://fonts.googleapis.com/css2?family=Knewave&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background-color: #000;
+            color: #FFD700;
+            font-family: 'Montserrat', sans-serif;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .container {
+            text-align: center;
+            border: 2px solid #FFD700;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(255, 215, 0, 0.5);
+            background-color: rgba(0, 0, 0, 0.8);
+            width: 80%;
+            max-width: 600px;
+        }
+        h1 {
+            font-family: Knewave, normal;
+            font-size: 50px;
+            margin-bottom: 20px;
+        }
+        textarea {
+            width: 100%;
+            height: 150px;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #FFD700;
+            border-radius: 5px;
+            background-color: #000;
+            color: #FFD700;
+            font-size: 1em;
+            transition: all 0.3s ease;
+        }
+        textarea:focus {
+            border-color: #DAA520;
+            outline: none;
+            box-shadow: 0 0 10px #DAA520;
+        }
+        button[type="submit"] {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            background-color: #FFD700;
+            color: #000;
+            font-size: 1em;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        button[type="submit"]:hover {
+            background-color: #DAA520;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Sezione Dediche</h1>
+        <form id="dedicaForm">
+            <textarea id="dedica" placeholder="Scrivi la tua dedica..." required></textarea>
+            <button type="submit">Invia Dedica</button>
+        </form>
+    </div>
+    <script>
+        document.getElementById('dedicaForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const dedica = document.getElementById('dedica').value;
+
+            fetch('https://YOUR_SERVER_ENDPOINT/send-dedica', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ dedica: dedica })
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    alert('Dedica inviata con successo!');
+                    document.getElementById('dedica').value = '';
+                } else {
+                    alert('Errore nell\'invio della dedica. Riprova più tardi.');
+                }
+            })
+            .catch(error => {
+                console.error('Errore:', error);
+                alert('Errore nell\'invio della dedica. Riprova più tardi.');
+            });
+        });
+    </script>
+</body>
+</html>
