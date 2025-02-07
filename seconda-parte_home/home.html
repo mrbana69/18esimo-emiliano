@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menu Principale</title>
+    <link href="https://fonts.googleapis.com/css2?family=Knewave&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background-color: #000;
+            color: #FFD700;
+            font-family: 'Montserrat', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .container {
+            text-align: center;
+            border: 2px solid #FFD700;
+            padding: 50px;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(255, 215, 0, 0.5);
+            background-color: rgba(0, 0, 0, 0.8);
+        }
+        h1 {
+            font-family: Knewave, normal;
+            font-size: 50px;
+            margin-bottom: 20px;
+        }
+        button {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            background-color: #FFD700;
+            color: #000;
+            font-size: 1em;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            margin: 10px 0;
+            width: 80%;
+        }
+        button:hover {
+            background-color: #DAA520;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Menu Principale</h1>
+        <button onclick="location.href='assets/gioco_trivia.html'">Gioco Trivia</button>
+        <button onclick="location.href='assets/chat_live.html'">Chat Live</button>
+        <button onclick="location.href='assets/virtual_photobooth.html'">Virtual Photobooth</button>
+        <button onclick="location.href='assets/sezione_dediche.html'">Sezione dediche e auguri</button>
+        <button onclick="location.href='assets/info_sito.html'">Info sito</button>
+    </div>
+</body>
+</html>

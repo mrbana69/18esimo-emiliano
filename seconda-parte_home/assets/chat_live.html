@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat Live</title>
+    <link href="https://fonts.googleapis.com/css2?family=Knewave&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background-color: #000;
+            color: #FFD700;
+            font-family: 'Montserrat', sans-serif;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .container {
+            text-align: center;
+            border: 2px solid #FFD700;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(255, 215, 0, 0.5);
+            background-color: rgba(0, 0, 0, 0.8);
+            width: 80%;
+            max-width: 600px;
+        }
+        h1 {
+            font-family: Knewave, normal;
+            font-size: 50px;
+            margin-bottom: 20px;
+        }
+        #messages {
+            height: 300px;
+            overflow-y: scroll;
+            border: 1px solid #FFD700;
+            padding: 10px;
+            margin-bottom: 20px;
+            background-color: #000;
+            color: #FFD700;
+        }
+        #messages p {
+            text-align: left;
+        }
+        input[type="text"] {
+            width: 80%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #FFD700;
+            border-radius: 5px;
+            background-color: #000;
+            color: #FFD700;
+            font-size: 1em;
+            transition: all 0.3s ease;
+        }
+        input[type="text"]:focus {
+            border-color: #DAA520;
+            outline: none;
+            box-shadow: 0 0 10px #DAA520;
+        }
+        button[type="submit"] {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            background-color: #FFD700;
+            color: #000;
+            font-size: 1em;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        button[type="submit"]:hover {
+            background-color: #DAA520;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Chat Live</h1>
+        <div id="messages"></div>
+        <form id="messageForm">
+            <input type="text" id="messageInput" placeholder="Scrivi un messaggio..." required>
+            <button type="submit">Invia</button>
+        </form>
+    </div>
+    <script src="https://js.pusher.com/7.0/pusher.min.js"></script>
+    <script>
+        // Configura Pusher
+        const pusher = new Pusher('e242d122715c9ce4d6a3', {
+            cluster: 'eu'
+        });
+
+        // Sottoscrivi al canale e evento
+        const channel = pusher.subscribe('chat');
+        channel.bind('message', function(data) {
+            const messagesDiv = document.getElementById('messages');
+            const messageElement = document.createElement('p');
+            messageElement.textContent = data.username + ': ' + data.message;
+            messagesDiv.appendChild(messageElement);
+            messagesDiv.scrollTop = messagesDiv.scrollHeight; // Scorri verso il basso
+        });
+
+        // Gestisci l'invio del form
+        document.getElementById('messageForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const messageInput = document.getElementById('messageInput');
+            const message = messageInput.value;
+
+            // Invia il messaggio al server (sostituisci con il tuo endpoint)
+            fetch('YOUR_SERVER_ENDPOINT', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ message: message })
+            });
+
+            messageInput.value = ''; // Pulisci il campo di input
+        });
+    </script>
+</body>
+</html>
