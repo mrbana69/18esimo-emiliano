@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HAI IL PERMESSO?</title>
+    <link href="https://fonts.googleapis.com/css2?family=Knewave&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background-color: #000;
+            color: #FFD700;
+            font-family: 'Montserrat', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .container {
+            text-align: center;
+            border: 2px solid #FFD700;
+            padding: 50px;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(255, 215, 0, 0.5);
+            background-color: rgba(0, 0, 0, 0.8);
+        }
+        h1 {
+            font-family: Knewave, normal;
+            font-size: 50px;
+            margin-bottom: 20px;
+        }
+        p {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1em;
+            margin-bottom: 20px;
+        }
+        input[type="password"] {
+            width: 80%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #FFD700;
+            border-radius: 5px;
+            background-color: #000;
+            color: #FFD700;
+            font-size: 1em;
+            transition: all 0.3s ease;
+        }
+        input[type="password"]:focus {
+            border-color: #DAA520;
+            outline: none;
+            box-shadow: 0 0 10px #DAA520;
+        }
+        button[type="submit"] {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            background-color: #FFD700;
+            color: #000;
+            font-size: 1em;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        button[type="submit"]:hover {
+            background-color: #DAA520;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>18esimo di Emiliano Bana</h1>
+        <p>Inserisci la parola d'ordine</p>
+        <form id="loginForm">
+            <input type="password" id="password" name="password" required>
+            <br>
+            <button type="submit">Entra</button>
+            <p id="errorMessage" style="color: red; display: none;">Password errata. Riprova.</p>
+        </form>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
