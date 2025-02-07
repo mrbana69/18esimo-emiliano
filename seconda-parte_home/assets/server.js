@@ -1,9 +1,13 @@
 const express = require('express');
 const bodyParser = require('body-parser');
+const cors = require('cors');
 const Pusher = require('pusher');
 
 const app = express();
 app.use(bodyParser.json());
+
+// Configura CORS
+app.use(cors());
 
 const pusher = new Pusher({
     appId: '1938373',
