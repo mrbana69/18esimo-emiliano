@@ -80,14 +80,14 @@
 
             const entry = { nome: nome, messaggio: messaggio };
 
-            // Save to JSON file
-            fetch('/save-entry', {
-                method: 'POST',
+            // Update the fetch URL in guestbook.html
+            fetch('https://your-render-url.onrender.com/save-entry', {
+            method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(entry)
-            })
+    },
+    body: JSON.stringify(entry)
+})
             .then(response => response.json())
             .then(data => {
                 if (data.success) {
