@@ -1,0 +1,14 @@
+{
+  "name": "guestbook-server",
+  "version": "1.0.0",
+  "description": "Server per il libro degli ospiti virtuale",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.17.1"
+  },
+  "author": "Emiliano Bana",
+  "license": "MIT"
+}
