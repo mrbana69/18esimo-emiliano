@@ -39,6 +39,8 @@ app.post('/send-dedica', (req, res) => {
 app.post('/submit-recommendation', (req, res) => {
     const { songTitle, artistName, songUrl } = req.body;
 
+    console.log('Ricevuta raccomandazione:', { songTitle, artistName, songUrl });
+
     const transporter = nodemailer.createTransport({
         service: 'SendinBlue', // Brevo è precedentemente conosciuto come SendinBlue
         auth: {
@@ -56,8 +58,10 @@ app.post('/submit-recommendation', (req, res) => {
 
     transporter.sendMail(mailOptions, (error, info) => {
         if (error) {
+            console.error('Errore nell\'invio dell\'email:', error);
             return res.status(500).json({ error: 'Failed to send email' });
         }
+        console.log('Email inviata:', info.response);
         res.status(200).json({ message: 'Recommendation submitted successfully' });
     });
 });
