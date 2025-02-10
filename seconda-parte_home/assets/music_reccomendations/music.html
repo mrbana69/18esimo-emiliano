@@ -93,7 +93,7 @@
             const artistName = document.getElementById('artist-name').value;
             const songUrl = document.getElementById('song-url').value;
 
-            fetch('/submit-recommendation', {
+            fetch('https://twilio-servizio.onrender.com/submit-recommendation', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
