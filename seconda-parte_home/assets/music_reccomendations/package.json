@@ -1,14 +1,17 @@
 {
   "name": "music-recommendations",
   "version": "1.0.0",
-  "description": "A server to receive music recommendations and send them via email using Brevo API",
+  "description": "A server to receive music recommendations and dedications, and send them via email using Brevo API",
   "main": "server.js",
   "scripts": {
     "start": "node server.js"
   },
   "dependencies": {
     "body-parser": "^1.19.0",
+    "cors": "^2.8.5",
+    "dotenv": "^10.0.0",
     "express": "^4.17.1",
-    "nodemailer": "^6.4.17"
+    "nodemailer": "^6.4.17",
+    "sib-api-v3-sdk": "^8.2.0"
   }
 }
