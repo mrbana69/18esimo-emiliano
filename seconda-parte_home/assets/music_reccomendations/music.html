@@ -68,6 +68,10 @@
         button[type="submit"]:hover {
             background-color: #DAA520;
         }
+        .message {
+            margin-top: 20px;
+            font-size: 1.2em;
+        }
     </style>
 </head>
 <body>
@@ -75,7 +79,7 @@
         <h1>Music Recommendations</h1>
         <section id="submit-recommendation">
             <h2>Submit Your Recommendation</h2>
-            <form id="recommendation-form" method="POST" action="https://music-raccomando.onrender.com/submit-recommendation">
+            <form id="recommendation-form">
                 <label for="song-title">Song Title:</label>
                 <input type="text" id="song-title" name="song-title" required>
                 <label for="artist-name">Artist Name:</label>
@@ -84,7 +88,40 @@
                 <input type="url" id="song-url" name="song-url">
                 <button type="submit">Submit</button>
             </form>
+            <div class="message" id="message"></div>
         </section>
     </div>
+    <script>
+        document.getElementById('recommendation-form').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const songTitle = document.getElementById('song-title').value;
+            const artistName = document.getElementById('artist-name').value;
+            const songUrl = document.getElementById('song-url').value;
+            const messageDiv = document.getElementById('message');
+
+            fetch('https://music-raccomando.onrender.com/submit-recommendation', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ songTitle, artistName, songUrl })
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.message) {
+                    messageDiv.textContent = 'Recommendation submitted successfully!';
+                    messageDiv.style.color = 'green';
+                } else {
+                    messageDiv.textContent = 'Failed to submit recommendation.';
+                    messageDiv.style.color = 'red';
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                messageDiv.textContent = 'Failed to submit recommendation.';
+                messageDiv.style.color = 'red';
+            });
+        });
+    </script>
 </body>
 </html>
