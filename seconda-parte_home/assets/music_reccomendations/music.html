@@ -72,39 +72,19 @@
 </head>
 <body>
     <div class="container">
-        <h1>Consigliami qualche canzone!</h1>
+        <h1>Music Recommendations</h1>
         <section id="submit-recommendation">
-            <h2>Sono aperto a (quasi tutti) i suggerimenti musicali!</h2>
+            <h2>Submit Your Recommendation</h2>
             <form id="recommendation-form" method="POST" action="https://music-raccomando.onrender.com/submit-recommendation">
-                <label for="song-title">Titolo:</label>
+                <label for="song-title">Song Title:</label>
                 <input type="text" id="song-title" name="song-title" required>
-                <label for="artist-name">Artista:</label>
+                <label for="artist-name">Artist Name:</label>
                 <input type="text" id="artist-name" name="artist-name" required>
-                <label for="song-url">(facoltativo) Link:</label>
+                <label for="song-url">Song URL:</label>
                 <input type="url" id="song-url" name="song-url">
                 <button type="submit">Submit</button>
             </form>
         </section>
     </div>
-    <script>
-        document.getElementById('recommendation-form').addEventListener('submit', function(event) {
-            event.preventDefault();
-            const songTitle = document.getElementById('song-title').value;
-            const artistName = document.getElementById('artist-name').value;
-            const songUrl = document.getElementById('song-url').value;
-
-            fetch('https://music-raccomando.onrender.com/submit-recommendation', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({ songTitle, artistName, songUrl })
-            })
-            .then(response => response.json())
-            .then(data => {
-                alert('Recommendation submitted successfully!');
-            })
-        });
-    </script>
 </body>
 </html>
