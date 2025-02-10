@@ -75,7 +75,7 @@
         <h1>Consigliami qualche canzone!</h1>
         <section id="submit-recommendation">
             <h2>Sono aperto a (quasi tutti) i suggerimenti musicali!</h2>
-            <form id="recommendation-form" method="POST" action="https://twilio-servizio.onrender.com:10000/submit-recommendation">
+            <form id="recommendation-form" method="POST" action="https://twilio-servizio.onrender.com/submit-recommendation">
                 <label for="song-title">Titolo:</label>
                 <input type="text" id="song-title" name="song-title" required>
                 <label for="artist-name">Artista:</label>
@@ -104,9 +104,6 @@
             .then(data => {
                 alert('Recommendation submitted successfully!');
             })
-            .catch(error => {
-                console.error('Error:', error);
-            });
         });
     </script>
 </body>
