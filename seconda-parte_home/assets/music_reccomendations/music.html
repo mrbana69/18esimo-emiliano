@@ -75,7 +75,7 @@
         <h1>Consigliami qualche canzone!</h1>
         <section id="submit-recommendation">
             <h2>Sono aperto a (quasi tutti) i suggerimenti musicali!</h2>
-            <form id="recommendation-form" method="POST" action="https://twilio-servizio.onrender.com/submit-recommendation">
+            <form id="recommendation-form" method="POST" action="https://music-raccomando.onrender.com/submit-recommendation">
                 <label for="song-title">Titolo:</label>
                 <input type="text" id="song-title" name="song-title" required>
                 <label for="artist-name">Artista:</label>
@@ -93,7 +93,7 @@
             const artistName = document.getElementById('artist-name').value;
             const songUrl = document.getElementById('song-url').value;
 
-            fetch('https://twilio-servizio.onrender.com/submit-recommendation', {
+            fetch('https://music-raccomando.onrender.com/submit-recommendation', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
