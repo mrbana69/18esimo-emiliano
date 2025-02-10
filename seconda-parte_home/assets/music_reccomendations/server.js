@@ -21,9 +21,9 @@ app.post('/send-dedica', (req, res) => {
     const { dedica } = req.body;
 
     const sendSmtpEmail = new SibApiV3Sdk.SendSmtpEmail();
-    sendSmtpEmail.subject = 'Nuova canzone consigliata';
+    sendSmtpEmail.subject = 'Nuova Dedica';
     sendSmtpEmail.htmlContent = `<html><body><p>${dedica}</p></body></html>`;
-    sendSmtpEmail.sender = { name: 'Nuova Canzone', email: process.env.SENDER_EMAIL };
+    sendSmtpEmail.sender = { name: 'Dediche', email: process.env.SENDER_EMAIL };
     sendSmtpEmail.to = [{ email: process.env.ADMIN_EMAIL }];
 
     apiInstance.sendTransacEmail(sendSmtpEmail).then(data => {
