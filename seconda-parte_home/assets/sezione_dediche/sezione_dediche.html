@@ -62,6 +62,19 @@
         button[type="submit"]:hover {
             background-color: #DAA520;
         }
+        button{
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            background-color: #FFD700;
+            color: #000;
+            font-size: 1em;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        button:hover {
+            background-color: #DAA520;
+        }
     </style>
 </head>
 <body>
@@ -71,7 +84,7 @@
             <textarea id="dedica" placeholder="Scrivi la tua dedica..." required></textarea>
             <button type="submit">Invia Dedica</button>
         </form>
-    <button onclick="location.href='home.html'">Home</button>
+        <button onclick="location.href='../home.html'">Home</button>
     </div>
     <script>
         document.getElementById('dedicaForm').addEventListener('submit', function(event) {
